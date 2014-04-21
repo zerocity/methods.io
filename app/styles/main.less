@@ -1,14 +1,50 @@
-@base: #ccc;
+body {
+	background: #fff;
+}
 
-.box-shadow(@style, @c) when (iscolor(@c)) {
-  -webkit-box-shadow: @style @c;
-  box-shadow:         @style @c;
+#toc {
+	position: fixed;
+	top: 0;
+	left: 0;
+	overflow: auto;
+	width: 250px;
+	height: 100%;
+	background: #222a30;
+	padding: 20px;
+
+	ul {
+		margin: 0;
+		padding: 0;
+
+		li {
+			list-style: none;
+
+         ul > li > a {
+            padding-left: 20px;
+         }
+
+         a {
+            color: #97cff2;
+            display: block;
+            text-decoration: none;
+            padding: 7px 0;
+            border-bottom: 1px solid lighten(#222a30, 3%);
+         }
+		}
+   }
+
+   > ul {
+      margin-bottom: 15px;
+
+      > li > a {
+         font-size: 1.2em;
+      }
+   }
 }
-.box-shadow(@style, @alpha: 50%) when (isnumber(@alpha)) {
-  .box-shadow(@style, rgba(0, 0, 0, @alpha));
-}
-.box {
-  color: saturate(@base, 5%);
-  border-color: lighten(@base, 30%);
-  div { .box-shadow(0 0 5px, 30%) }
+
+
+#page {
+	background: #fff;
+	margin-left: 250px;
+	padding: 30px;
 }

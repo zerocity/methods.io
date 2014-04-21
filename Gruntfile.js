@@ -11,6 +11,7 @@ module.exports = function (grunt) {
 
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
+  grunt.loadNpmTasks('grunt-contrib-less');
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
@@ -43,8 +44,8 @@ module.exports = function (grunt) {
         tasks: ['newer:jshint:test', 'karma']
       },
       styles: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
-        tasks: ['newer:copy:styles', 'autoprefixer']
+        files: ['<%= yeoman.app %>/styles/{,*/}*.css','<%= yeoman.app %>/styles/{,*/}*.less'],
+        tasks: ['less','newer:copy:styles','autoprefixer']
       },
       gruntfile: {
         files: ['Gruntfile.js']
@@ -140,6 +141,16 @@ module.exports = function (grunt) {
           src: '{,*/}*.css',
           dest: '.tmp/styles/'
         }]
+      }
+    },
+
+    //less
+
+    less: {
+      development: {
+        files: {
+          '<%= yeoman.app %>/styles/main.css':'<%= yeoman.app %>/styles/main.less'
+        }
       }
     },
 
@@ -351,6 +362,7 @@ module.exports = function (grunt) {
       'clean:server',
       'bowerInstall',
       'concurrent:server',
+      'less',
       'autoprefixer',
       'connect:livereload',
       'watch'

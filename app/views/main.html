@@ -34,12 +34,12 @@
 </aside>
 <section id="page">
   <h1>Abstract</h1>
-  <p> {{data.abstract}} </p>
+  <div editable-textarea="data.abstract" ng-model="data.abstract" e-rows="10" e-cols="155" ng-bind-html="data.abstract | markdown" ></div >
   <h1>Introduction</h1>
-  <p> {{data.introduction}} </p>
+  <div editable-textarea="data.introduction" ng-model="data.introduction" e-rows="10" e-cols="155"  ng-bind-html="data.introduction | markdown" ></div >
   <h1>Equipment</h1>
   <ul>
-    <li ng-repeat="equipment in data.equipment">
+    <li ng-repeat="equipment in data.equipment" editable-text="equipment" ng-model="equipment" >
         {{equipment}}
      </li>
   </ul>
@@ -47,20 +47,20 @@
 
   <h1>Materials</h1>
   <ul>
-    <li ng-repeat="material in data.materials">
+    <li ng-repeat="material in data.materials" editable-text="material" ng-model="material">
         {{material}}
     </li>
   </ul>
   <div class="box" ng-repeat="processgroup in data.procedure">
-    <h2>{{processgroup.processGroupTitle}}</h2>
+    <h2 editable-text="processgroup.processGroupTitle" ng-model="processgroup.processGroupTitle">{{processgroup.processGroupTitle}}</h2>
     <hr>
       <div class="box" ng-repeat="processStep in processgroup.processSteps">
-        <h3>{{processStep.title}}</h3>
-        <div ng-bind-html="processStep.context | markdown"></div>
-        <div ng-bind-html="processStep.highlights | markdown"></div>
-        <div ng-bind-html="processStep.critical | markdown"></div>
-        <div ng-bind-html="processStep.safty | markdown"></div>
-        <div ng-bind-html="processStep.behavior | markdown"></div>
+        <h3 editable-text="processStep.title" ng-model="processStep.title">{{processStep.title}}</h3>
+        <div editable-textarea="processStep.context" e-rows="5" e-cols="100" ng-model="processStep.context" ng-bind-html="processStep.context | markdown"></div>
+        <div editable-textarea="processStep.highlights"  e-rows="5" e-cols="155" ng-model="processStep.highlights" ng-bind-html="processStep.highlights | markdown"></div>
+        <div editable-textarea="processStep.critical"  e-rows="5" e-cols="155" ng-model="processStep.critical" ng-bind-html="processStep.critical | markdown"></div>
+        <div editable-textarea="processStep.safty"  e-rows="5" e-cols="155" ng-model="processStep.safty" ng-bind-html="processStep.safty | markdown"></div>
+        <div editable-textarea="processStep.behavior"  e-rows="5" e-cols="155" ng-model="processStep.behavior" ng-bind-html="processStep.behavior | markdown"></div>
 
         <div class="box">
           <p>{{processStep.userImput.lable}}</p>

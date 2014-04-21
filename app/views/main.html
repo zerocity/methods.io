@@ -1,45 +1,54 @@
 <div class="main">
-<h1>Abstract</h1>
-  <p> {{data.abstract}} </p>
-  <h1>Introduction</h1>
-  <p> {{data.introduction}} </p>
-  <h1>Equipment</h1>
-  <ul>
-    <li ng-repeat="equipment in data.equipment">
+
+
+  <h1>Abstract</h1>
+  <textarea class="abstract markdown hide" ng-model="data.abstract" ></textarea>
+
+  <div class="abstract" ng-click="editor(this);" ng-bind-html="data.abstract | markdown"> {{data.abstract}} </div>
+
+  <div class="hide">
+     <div > {{data.introduction}} </div>
+     <h1>Introduction</h1>
+     <h1>Equipment</h1>
+     <ul>
+      <li ng-repeat="equipment in data.equipment">
         {{equipment}}
-    </li>
+     </li>
   </ul>
+</div ng-click="editor(this);">
 
-  <h1>Materials</h1>
-  <ul>
-    <li ng-repeat="material in data.materials">
-        {{material}}
-    </li>
-  </ul>
-  <div class="box" ng-repeat="processgroup in data.procedure">
-    <h2>{{processgroup.processGroupTitle}}</h2>
-    <hr>
-      <div class="box" ng-repeat="processStep in processgroup.processSteps">
-        <h3>{{processStep.title}}</h3>
-        <div ng-bind-html="processStep.context | markdown"></div>
-        <div ng-bind-html="processStep.highlights | markdown"></div>
-        <div ng-bind-html="processStep.critical | markdown"></div>
-        <div ng-bind-html="processStep.safty | markdown"></div>
-        <div ng-bind-html="processStep.behavior | markdown"></div>
+<h1>Materials</h1>
+<ul>
+  <li ng-click="editor(this);" ng-repeat="material in data.materials">
+    {{material}}
+ </li>
+</ul>
 
-        <div class="box">
-          <p>{{processStep.userImput.lable}}</p>
-          <p>{{processStep.userImput.type}}</p>
-          <p>{{processStep.userImput.user}}</p>
-          <p>{{processStep.userImput.date}}</p>
-        </div>
 
-          <ul class="box">
-            <li ng-repeat="data in processStep.userInput.value">
-              <p>{{data}}</p>
-            </li>
-          </ul>
+<div class="box hide" ng-repeat="processgroup in data.procedure">
+  <h2>{{processgroup.processGroupTitle}}</h2>
+  <hr>
+  <div class="box" ng-repeat="processStep in processgroup.processSteps">
+    <h3>{{processStep.title}}</h3>
+    <div ng-bind-html="processStep.context | markdown"></div>
+    <div ng-bind-html="processStep.highlights | markdown"></div>
+    <div ng-bind-html="processStep.critical | markdown"></div>
+    <div ng-bind-html="processStep.safty | markdown"></div>
+    <div ng-bind-html="processStep.behavior | markdown"></div>
 
-      </div>
+    <div class="box">
+     <p>{{processStep.userImput.lable}}</p>
+     <p>{{processStep.userImput.type}}</p>
+     <p>{{processStep.userImput.user}}</p>
+     <p>{{processStep.userImput.date}}</p>
   </div>
+
+  <ul class="box">
+   <li ng-repeat="data in processStep.userInput.value">
+    <p>{{data}}</p>
+ </li>
+</ul>
+
+</div>
+</div>
 </div>

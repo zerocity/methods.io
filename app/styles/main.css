@@ -119,15 +119,15 @@ header .inner .btn-group .btn-group + .btn-group {
   z-index: 9999;
 }
 #toc ul > li > aside {
-  position: fixed;
-  top: 0;
-  left: 210px;
-  overflow: auto;
-  width: 210px;
-  height: 100%;
-  background: #222a30;
-  border-left: 1px solid #2d373f;
-  padding-top: 50px;
+  /*position: fixed;
+            top: 0;
+            left: 210px;
+            overflow: auto;
+            width: 210px;
+            height: 100%;
+            background: #222a30;
+            border-left: 1px solid lighten(#222a30, 5%);
+            padding-top: 50px; */
 }
 #page {
   max-width: 700px;

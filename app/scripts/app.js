@@ -7,7 +7,8 @@ angular
     'ngSanitize',
     'ngRoute',
     'mgcrea.ngStrap',
-    'xeditable'
+    'xeditable',
+    'ui.codemirror'
   ])
   .config(function ($routeProvider) {
     $routeProvider

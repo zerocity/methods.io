@@ -36,36 +36,26 @@ angular.module('methodsioApp')
       $scope.md = dummyJson.json2md(dummyJson.getDummy());
 
 
-      $scope.editorOptions = {
-        lineWrapping : true,
-        lineNumbers: true,
-        mode: 'markdown',
-        theme: "xq-light"
-      };
+  $scope.codemirrorLoaded = function(_editor){
+    // Editor part
+    var _doc = _editor.getDoc();
+    _editor.focus();
 
+    // Options
+    _editor.setOption('lineNumbers', true);
+    _editor.setOption('lineWrapping', true);
+    _editor.setOption('mode','markdown');
+    _editor.setOption('theme','xq-light');
 
-/*      var config = {
-         value: $scope.md,
-         lineNumbers: true,
-         mode: "text/x-gfm",
-      };
+    _doc.markClean()
+    // Events
+    _editor.on("beforeChange",function (res) {
+      console.log(res.doc.height);
+    });
+  };
 
-      var editor = CodeMirror(document.getElementById("editor"), config);
-
-      console.log(editor);*/
-
-/*      var myCodeMirror = CodeMirror(document.getElementById('editor'), {
-
-      });
-
-      myCodeMirror.setOption()
-
-
-        theme: "monokai",
-        mode:  "text/x-markdown"
-      console.log(myCodeMirror);
-      console.log(myCodeMirror.modes);*/
-
-
+   window.onresize = function(event) {
+      $scope.editorHight= $(window).height();
+   };
 
 });

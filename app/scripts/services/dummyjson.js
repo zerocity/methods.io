@@ -195,18 +195,18 @@ angular.module('methodsioApp')
          exportMarkdown = exportMarkdown + '  \n '*/
 
          // Add list features
-         exportMarkdown = exportMarkdown + '  \n # Materials' +'  \n ';
+/*         exportMarkdown = exportMarkdown + '# Materials  \n';
 
          _.map(jsonImport.materials,function (value,key) {
             jsonImport.materials[key] = '- '+jsonImport.materials[key];
-            exportMarkdown = exportMarkdown + jsonImport.materials[key] + '  \n ';
-         });
+            exportMarkdown = exportMarkdown + jsonImport.materials[key] + '  \n';
+         });*/
 
 
-         exportMarkdown = exportMarkdown + '# Workspace Preration' +'  \n';
+         //exportMarkdown = exportMarkdown + '# Workspace Preration' +'  \n';
 
          //jsonImport.enviromentConditions = '# Workspace Preration \n'+jsonImport.enviromentConditions;
-         exportMarkdown = exportMarkdown + jsonImport.enviromentConditions  +'  \n ';
+         //exportMarkdown = exportMarkdown + jsonImport.enviromentConditions  +'  \n ';
 
       //
          // add Procedure MD title
@@ -219,25 +219,16 @@ angular.module('methodsioApp')
             exportMarkdown = exportMarkdown + value.processGroupTitle +' \n'
             _.map(value.processSteps,function (value,key){
                //
-               value.title = '\n  '+(key +1) +'. '+ value.title
+               value.title = '\n### '+(key +1) +'. '+ value.title
                exportMarkdown = exportMarkdown + value.title +'  \n '
-
-               value.context = '> '+ value.context
-               exportMarkdown = exportMarkdown + value.context +'  \n '
-
-               value.highlights = '> '+ value.highlights
+               exportMarkdown = exportMarkdown + value.context +'  \n   \n'
                exportMarkdown = exportMarkdown + value.highlights +'  \n '
-
-               value.critical = '> '+ value.critical
                exportMarkdown = exportMarkdown + value.critical +'  \n '
-
-               value.safety = '> '+ value.safety
                exportMarkdown = exportMarkdown + value.safety +'  \n '
-
-               value.behavior = '> '+ value.behavior
                exportMarkdown = exportMarkdown + value.behavior +'  \n '
 
-               var codeBlock = ''
+
+               var codeBlock = '  \n'
                value.userInput = _.omit(value.userInput,'user','date');
                _.map(value.userInput,function (value,key){
                   if (typeof value[0] === 'object') {

@@ -44,9 +44,9 @@
     </li>
   </ul>
 </aside>
-<div id="main">
+<div id="main" ng-style="{height: editorHight}">
    <section id="editor" >
-      <ui-codemirror ui-codemirror-opts="editorOptions" ng-model="md"></ui-codemirror>
+      <div ui-codemirror="{ onLoad : codemirrorLoaded }" ng-model="md" ></div>
    </section>
    <section id="page" ng-bind-html="md | markdown"> </section>
 </div>

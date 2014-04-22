@@ -46,6 +46,9 @@
 </aside>
 <div id="main">
    <section id="editor" >
+   <ui-codemirror ui-codemirror-opts="editorOptions" ng-model="md"></ui-codemirror>
+
+
    </section>
    <section id="page" ng-bind-html="md | markdown"> </section>
 </div>

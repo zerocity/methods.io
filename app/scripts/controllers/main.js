@@ -36,16 +36,23 @@ angular.module('methodsioApp')
       $scope.md = dummyJson.json2md(dummyJson.getDummy());
 
 
-      var config = {
+      $scope.editorOptions = {
+        lineWrapping : true,
+        lineNumbers: true,
+        mode: 'markdown',
+        theme: "xq-light"
+      };
+
+
+/*      var config = {
          value: $scope.md,
          lineNumbers: true,
          mode: "text/x-gfm",
-         theme: "ambiance"
       };
 
       var editor = CodeMirror(document.getElementById("editor"), config);
 
-      console.log(editor);
+      console.log(editor);*/
 
 /*      var myCodeMirror = CodeMirror(document.getElementById('editor'), {
 

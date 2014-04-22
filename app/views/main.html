@@ -33,9 +33,11 @@
       <a class="active" href="" ng-click="leo('.grp'+$index,'hide')" > {{processgroup.processGroupTitle}} <i class="arrow_box">{{processgroup.processSteps.length}}</i>
       </a>
 
-      <ul class="grp{{$index}}">
-         <li ng-repeat="processStep in processgroup.processSteps"><a href="#">{{$index +1 }} - {{processStep.title}}</a></li>
+      <ul class="grp{{$index}} hide" >
+         <li ng-repeat="processStep in processgroup.processSteps"><a href="">{{$index +1 }} - {{processStep.title}}</a></li>
       </ul>
+
+
     </li>
   </ul>
 </aside>

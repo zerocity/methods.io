@@ -9,4 +9,9 @@ angular.module('methodsioApp')
          console.log('test');
          console.log($scope.data.procedure);
       }
+
+      $scope.leo = function (element,animate) {
+         $(element).toggleClass(animate);
+      }
+
 });

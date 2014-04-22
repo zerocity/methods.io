@@ -29,20 +29,14 @@
   </ul>
   <ul>
     <li><a href="#">Process <i class="glyphicon glyphicon-chevron-down pull-right"></i></a></li>
-    <li><a class="active" href="#">Process Group 01 <i class="arrow_box">9</i></a>
-      <ul>
-         <li><a href="#">Step 01</a></li>
-         <li><a href="#">Step 02</a></li>
-         <li><a href="#">Step 03</a></li>
-         <li><a href="#">Step 04</a></li>
-         <li><a href="#">Step 05</a></li>
-         <li><a href="#">Step 06</a></li>
-         <li><a href="#">Step 07</a></li>
-         <li><a href="#">Step 08</a></li>
-         <li><a href="#">Step 09</a></li>
+    <li ng-repeat="processgroup in data.procedure">
+      <a class="active" href="" ng-click="leo('.grp'+$index,'hide')" > {{processgroup.processGroupTitle}} <i class="arrow_box">{{processgroup.processSteps.length}}</i>
+      </a>
+
+      <ul class="grp{{$index}}">
+         <li ng-repeat="processStep in processgroup.processSteps"><a href="#">{{$index +1 }} - {{processStep.title}}</a></li>
       </ul>
     </li>
-    <li><a href="#">Process Group 02 <i>39</i></a></li>
   </ul>
 </aside>
 <section id="page">
@@ -65,6 +59,7 @@
     </li>
   </ul>
   <div class="box" ng-repeat="processgroup in data.procedure">
+
     <h2 editable-text="processgroup.processGroupTitle" ng-model="processgroup.processGroupTitle">{{processgroup.processGroupTitle}}</h2>
     <hr>
 

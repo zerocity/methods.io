@@ -11,7 +11,15 @@ angular.module('methodsioApp')
       }
 
       $scope.leo = function (element,animate) {
-         $(element).toggleClass(animate);
+         console.log(element);
+         console.log(animate);
+
+         $(element).toggleClass(animate,function (test) {
+
+         });
+
+
+
       }
 
 });

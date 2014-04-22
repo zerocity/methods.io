@@ -55,7 +55,7 @@ angular.module('methodsioApp')
   };
 
    window.onresize = function(event) {
-      $scope.editorHight= $(window).height();
+      $scope.editorHeight= $(window).height();
    };
 
 });

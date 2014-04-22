@@ -13,9 +13,7 @@ header {
    z-index: 999;
 
    #logo {
-      position: fixed;
-      top: 0;
-      left: 0;
+      float: left;
       width: 210px;
       height: 50px;
       font-size: 20px;
@@ -34,14 +32,7 @@ header {
    }
 
    .inner {
-      width: 50%;
-      box-sizing: border-box;
-      max-width: 700px;
-      height: 50px;
-      padding: 7px 30px;
       margin-left: 210px;
-      background: darken(#009cff, 5%);
-      border-right: 1px solid darken(#009cff, 12%);
 
       .btn-default {
          font-size: 12px;
@@ -54,6 +45,25 @@ header {
 
       .btn-group .btn + .btn, .btn-group .btn + .btn-group, .btn-group .btn-group + .btn, .btn-group .btn-group + .btn-group {
          margin-left: -2px;
+      }
+
+      #editor-buttons {
+         float: left;
+         width: 50%;
+         box-sizing: border-box;
+         height: 50px;
+         padding: 7px 30px;
+         background: darken(#009cff, 5%);
+      }
+
+      #view-buttons {
+         float: left;
+         width: 50%;
+         box-sizing: border-box;
+         height: 50px;
+         padding: 7px 30px;
+         background: darken(#009cff, 10%);
+         border-left: 1px solid darken(#009cff, 12%);
       }
    }
 }
@@ -156,7 +166,7 @@ header {
    box-sizing: border-box;
 
    background: #fff;
-   border-right: 1px solid #ddd;
+   border-left: 1px solid #ddd;
    padding: 25px;
 
    h1:first-child {

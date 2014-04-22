@@ -12,9 +12,7 @@ header {
   z-index: 999;
 }
 header #logo {
-  position: fixed;
-  top: 0;
-  left: 0;
+  float: left;
   width: 210px;
   height: 50px;
   font-size: 20px;
@@ -31,14 +29,7 @@ header #logo .glyphicon {
   margin-right: 10px;
 }
 header .inner {
-  width: 50%;
-  box-sizing: border-box;
-  max-width: 700px;
-  height: 50px;
-  padding: 7px 30px;
   margin-left: 210px;
-  background: #008ce6;
-  border-right: 1px solid #0077c2;
 }
 header .inner .btn-default {
   font-size: 12px;
@@ -53,6 +44,23 @@ header .inner .btn-group .btn + .btn-group,
 header .inner .btn-group .btn-group + .btn,
 header .inner .btn-group .btn-group + .btn-group {
   margin-left: -2px;
+}
+header .inner #editor-buttons {
+  float: left;
+  width: 50%;
+  box-sizing: border-box;
+  height: 50px;
+  padding: 7px 30px;
+  background: #008ce6;
+}
+header .inner #view-buttons {
+  float: left;
+  width: 50%;
+  box-sizing: border-box;
+  height: 50px;
+  padding: 7px 30px;
+  background: #007dcc;
+  border-left: 1px solid #0077c2;
 }
 #toc {
   position: fixed;
@@ -139,7 +147,7 @@ header .inner .btn-group .btn-group + .btn-group {
   float: left;
   box-sizing: border-box;
   background: #fff;
-  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd;
   padding: 25px;
 }
 #page h1:first-child {

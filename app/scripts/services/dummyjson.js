@@ -17,7 +17,7 @@ angular.module('methodsioApp')
     "Materials dummy 2",
     "Materials dummy 3"
   ],
-  "enviromentConditions": " Phenolische DNA Aufreinigung - Hintergrund und Protokoll > **Hinnweis:** Kontrollieren Sie das Phenol vor Gebrauch! Phenolische Lösungen sollten wasserklar und ungefärbt sein und können für etwa 1 Jahr im Kühlschrank aufbewahrt werden (dunkel und bei konstanter Temperatur). Sollte eine mehr oder weniger deutliche, rötliche oder pinkfarbene Färbung der Lösung zu sehen sein, hat der Oxidationsprozess des Phenols begonnen, und das Phenol wird die Nukleinsäuren während der Isolation angreifen und beschädigen. Verwerfen Sie das Phenol und verwenden sie eine neue Charge!",
+  "enviromentConditions": "Phenolische DNA Aufreinigung - Hintergrund und Protokoll > **Hinnweis:** Kontrollieren Sie das Phenol vor Gebrauch! Phenolische Lösungen sollten wasserklar und ungefärbt sein und können für etwa 1 Jahr im Kühlschrank aufbewahrt werden (dunkel und bei konstanter Temperatur). Sollte eine mehr oder weniger deutliche, rötliche oder pinkfarbene Färbung der Lösung zu sehen sein, hat der Oxidationsprozess des Phenols begonnen, und das Phenol wird die Nukleinsäuren während der Isolation angreifen und beschädigen. Verwerfen Sie das Phenol und verwenden sie eine neue Charge!",
   "procedure": [
     {
       "processGroupTitle": "Groupe Title 1",
@@ -162,10 +162,101 @@ angular.module('methodsioApp')
   ]
 }
 
+
+
+
+
+
+
+
+
     // Public API here
     return {
       getDummy: function () {
-        return dummy;
+         return dummy;
+      },
+      json2md : function(jsonImport) {
+         var exportMarkdown = '';
+         // Add Abstract
+         jsonImport.abstract ='# Abstract \n'+jsonImport.abstract;
+         // exportMarkdown = jsonImport.abstract + '  \n ';
+
+         // Add Introduction
+         jsonImport.introduction ='# Introduction \n'+jsonImport.introduction;
+         //exportMarkdown = exportMarkdown + jsonImport.introduction + '  \n ';
+
+/*         // Add list features
+         exportMarkdown = exportMarkdown + '  \n # Equipment' +'  \n ';
+         _.map(jsonImport.equipment,function (value,key) {
+            jsonImport.equipment[key] = '- '+jsonImport.equipment[key];
+            exportMarkdown = exportMarkdown + jsonImport.equipment[key] + '  \n ';
+         });
+         // linebreak
+         exportMarkdown = exportMarkdown + '  \n '*/
+
+         // Add list features
+         exportMarkdown = exportMarkdown + '  \n # Materials' +'  \n ';
+
+         _.map(jsonImport.materials,function (value,key) {
+            jsonImport.materials[key] = '- '+jsonImport.materials[key];
+            exportMarkdown = exportMarkdown + jsonImport.materials[key] + '  \n ';
+         });
+
+
+         exportMarkdown = exportMarkdown + '# Workspace Preration' +'  \n';
+
+         //jsonImport.enviromentConditions = '# Workspace Preration \n'+jsonImport.enviromentConditions;
+         exportMarkdown = exportMarkdown + jsonImport.enviromentConditions  +'  \n ';
+
+      //
+         // add Procedure MD title
+         jsonImport.procedureTitle = '## Procedure';
+      //
+
+         _.map(jsonImport.procedure,function (value,key){
+            // Group Titles
+            value.processGroupTitle = '## '+value.processGroupTitle
+            exportMarkdown = exportMarkdown + value.processGroupTitle +' \n'
+            _.map(value.processSteps,function (value,key){
+               //
+               value.title = '\n  '+(key +1) +'. '+ value.title
+               exportMarkdown = exportMarkdown + value.title +'  \n '
+
+               value.context = '> '+ value.context
+               exportMarkdown = exportMarkdown + value.context +'  \n '
+
+               value.highlights = '> '+ value.highlights
+               exportMarkdown = exportMarkdown + value.highlights +'  \n '
+
+               value.critical = '> '+ value.critical
+               exportMarkdown = exportMarkdown + value.critical +'  \n '
+
+               value.safety = '> '+ value.safety
+               exportMarkdown = exportMarkdown + value.safety +'  \n '
+
+               value.behavior = '> '+ value.behavior
+               exportMarkdown = exportMarkdown + value.behavior +'  \n '
+
+               var codeBlock = ''
+               value.userInput = _.omit(value.userInput,'user','date');
+               _.map(value.userInput,function (value,key){
+                  if (typeof value[0] === 'object') {
+                     codeBlock = value[0].value +' min: '+ value[0].minValue +' max: '+ value[0].maxValue +' '+ codeBlock;
+                  } else {
+                     codeBlock = value +' '+ codeBlock;
+                  }
+               });
+               // add to Json markdown
+               value.userInput ='´´´userImput '+codeBlock+' ´´´';
+               exportMarkdown = exportMarkdown + value.userInput +' \n'
+            });
+         });
+
+      //console.log(exportMarkdown);
+
+      return exportMarkdown;
+
       }
+
     };
   });

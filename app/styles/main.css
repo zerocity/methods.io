@@ -31,6 +31,8 @@ header #logo .glyphicon {
   margin-right: 10px;
 }
 header .inner {
+  width: 50%;
+  box-sizing: border-box;
   max-width: 700px;
   height: 50px;
   padding: 7px 30px;
@@ -129,13 +131,26 @@ header .inner .btn-group .btn-group + .btn-group {
   border-left: 1px solid #2d373f;
   padding-top: 50px;
 }
-#page {
-  max-width: 700px;
-  background: #fff;
-  border-right: 1px solid #ddd;
-  padding: 50px;
+#main {
   margin-left: 210px;
 }
+#page {
+  width: 50%;
+  float: left;
+  box-sizing: border-box;
+  background: #fff;
+  border-right: 1px solid #ddd;
+  padding: 25px;
+}
 #page h1:first-child {
+  margin-top: 0;
+}
+#editor {
+  width: 50%;
+  float: left;
+  box-sizing: border-box;
+  background: #fff;
+}
+#editor h1:first-child {
   margin-top: 0;
 }

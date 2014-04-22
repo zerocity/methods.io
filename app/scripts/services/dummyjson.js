@@ -30,15 +30,17 @@ angular.module('methodsioApp')
           "critical": "Critical Context",
           "safety": "Safety Context",
           "behavior": "Behavior Context",
-          "userImput": {
+          "userInput": {
             "lable": "weight",
             "type": "range",
-            "value": [
+            "expectedValue": [
               {
+                "value" : 2.5,
                 "minValue": 1,
                 "maxValue": 4
               }
             ],
+            'value':'',
             "user": "Peter",
             "date": "12.12.12"
           }
@@ -51,14 +53,15 @@ angular.module('methodsioApp')
           "critical": "Critical Context",
           "safety": "Safety Context",
           "behavior": "Behavior Context",
-          "userImput": {
+          "userInput": {
             "lable": "weight",
             "type": "Checkbox",
-            "value": [
+            "expectedValue": [
               "Red",
               "Blue",
               "Black"
             ],
+            'value':'',
             "user": "Peter",
             "date": "12.12.12"
           }
@@ -71,14 +74,15 @@ angular.module('methodsioApp')
           "critical": "Critical Context",
           "safety": "Safety Context",
           "behavior": "Behavior Context",
-          "userImput": {
+          "userInput": {
             "lable": "weight",
             "type": "radio",
-            "value": [
+            "expectedValue": [
               "Red",
               "Blue",
               "Black"
             ],
+            'value':'',
             "user": "Peter",
             "date": "12.12.12"
           }
@@ -96,15 +100,17 @@ angular.module('methodsioApp')
           "critical": "Critical Context",
           "safety": "Safety Context",
           "behavior": "Behavior Context",
-          "userImput": {
+          "userInput": {
             "lable": "weight",
             "type": "range",
-            "value": [
+            "expectedValue": [
               {
+                "value" : 2.5,
                 "minValue": 1,
                 "maxValue": 4
               }
             ],
+            'value':'',
             "user": "Peter",
             "date": "12.12.12"
           }
@@ -117,14 +123,15 @@ angular.module('methodsioApp')
           "critical": "Critical Context",
           "safety": "Safety Context",
           "behavior": "Behavior Context",
-          "userImput": {
+          "userInput": {
             "lable": "weight",
             "type": "Checkbox",
-            "value": [
+            "expectedValue": [
               "Red",
               "Blue",
               "Black"
             ],
+            'value':'',
             "user": "Peter",
             "date": "12.12.12"
           }
@@ -137,14 +144,15 @@ angular.module('methodsioApp')
           "critical": "Critical Context",
           "safety": "Safety Context",
           "behavior": "Behavior Context",
-          "userImput": {
+          "userInput": {
             "lable": "weight",
             "type": "radio",
-            "value": [
+            "expectedValue": [
               "Red",
               "Blue",
               "Black"
             ],
+            'value':'',
             "user": "Peter",
             "date": "12.12.12"
           }

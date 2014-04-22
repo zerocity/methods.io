@@ -33,12 +33,13 @@
   </ul>
 </aside>
 <section id="page">
+   <button ng-click="getScope()">get scope</button>
   <h1>Abstract</h1>
-  <div editable-textarea="data.abstract" ng-model="data.abstract" e-rows="10" e-cols="155" ng-bind-html="data.abstract | markdown" ></div >
+  <div class="hide" editable-textarea="data.abstract" ng-model="data.abstract" e-rows="10" e-cols="155" ng-bind-html="data.abstract | markdown" ></div >
   <h1>Introduction</h1>
-  <div editable-textarea="data.introduction" ng-model="data.introduction" e-rows="10" e-cols="155"  ng-bind-html="data.introduction | markdown" ></div >
+  <div class="hide" editable-textarea="data.introduction" ng-model="data.introduction" e-rows="10" e-cols="155"  ng-bind-html="data.introduction | markdown" ></div >
   <h1>Equipment</h1>
-  <ul>
+  <ul class="hide">
     <li ng-repeat="equipment in data.equipment" editable-text="equipment" ng-model="equipment" >
         {{equipment}}
      </li>
@@ -54,6 +55,7 @@
   <div class="box" ng-repeat="processgroup in data.procedure">
     <h2 editable-text="processgroup.processGroupTitle" ng-model="processgroup.processGroupTitle">{{processgroup.processGroupTitle}}</h2>
     <hr>
+
       <div class="box" ng-repeat="processStep in processgroup.processSteps">
         <h3 editable-text="processStep.title" ng-model="processStep.title">{{processStep.title}}</h3>
         <div editable-textarea="processStep.context" e-rows="5" e-cols="100" ng-model="processStep.context" ng-bind-html="processStep.context | markdown"></div>
@@ -62,18 +64,9 @@
         <div editable-textarea="processStep.safty"  e-rows="5" e-cols="155" ng-model="processStep.safty" ng-bind-html="processStep.safty | markdown"></div>
         <div editable-textarea="processStep.behavior"  e-rows="5" e-cols="155" ng-model="processStep.behavior" ng-bind-html="processStep.behavior | markdown"></div>
 
-        <div class="box">
-          <p>{{processStep.userImput.lable}}</p>
-          <p>{{processStep.userImput.type}}</p>
-          <p>{{processStep.userImput.user}}</p>
-          <p>{{processStep.userImput.date}}</p>
-        </div>
+         <!-- Create an directive for the imput type see /app/views/directives/userValue.html -->
+        <user-value user-input="processStep.userInput" ></user-value>
 
-          <ul class="box">
-            <li ng-repeat="data in processStep.userInput.value">
-              <p>{{data}}</p>
-            </li>
-          </ul>
       </div>
   </div>
 </section>

@@ -1,59 +1,158 @@
 body {
-	background: #fff;
+	background: #efefef;
+   padding-top: 50px;
+}
+
+header {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 50px;
+   background: darken(#009cff, 10%);
+   z-index: 999;
+
+   #logo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 420px;
+      height: 50px;
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 50px;
+      color: #fff;
+      background: #009cff;
+      z-index: 999;
+      box-sizing: border-box;
+      padding: 0 20px;
+
+      .glyphicon {
+         top: 4px;
+         margin-right: 10px;
+      }
+   }
+
+   .inner {
+      max-width: 700px;
+      height: 50px;
+      padding: 7px 30px;
+      margin-left: 420px;
+      background: darken(#009cff, 5%);
+      border-right: 1px solid darken(#009cff, 12%);
+
+      .btn-default {
+         font-size: 12px;
+         width: 50px;
+         color: #fff;
+         background: #009cff;
+         border-color: lighten(#009cff, 25%);
+         border-width: 2px;
+      }
+
+      .btn-group .btn + .btn, .btn-group .btn + .btn-group, .btn-group .btn-group + .btn, .btn-group .btn-group + .btn-group {
+         margin-left: -2px;
+      }
+   }
 }
 
 #toc {
 	position: fixed;
 	top: 0;
 	left: 0;
-	overflow: auto;
-	width: 250px;
+	width: 210px;
 	height: 100%;
 	background: #222a30;
-	padding: 20px;
+	padding-top: 50px;
 
 	ul {
 		margin: 0;
 		padding: 0;
 
-		li {
+		> li {
 			list-style: none;
 
-         ul > li > a {
-            padding-left: 20px;
+         &:first-child > a {
+            color: #fff;
+            background: lighten(#222a30, 3%);
+
+            > i {
+               background: #3e6c62;
+               border-bottom: 1px solid lighten(#3e6c62, 20%);
+            }
          }
 
-         a {
-            color: #97cff2;
+         > a {
+            color: #95e9d6;
             display: block;
             text-decoration: none;
-            padding: 7px 0;
-            border-bottom: 1px solid lighten(#222a30, 3%);
+            padding: 10px 20px;
+            border-bottom: 1px solid lighten(#222a30, 5%);
+
+            > i {
+               float: right;
+               top: 0;
+               width: 41px;
+               height: 41px;
+               color: #fff;
+               font-style: normal;
+               line-height: 41px;
+               text-align: center;
+               background: #02b68e;
+               border-bottom: 1px solid lighten(#02b68e, 5%);
+               margin: -10px -20px -10px 0;
+
+               &.muted {
+                  background: darken(#02b68e, 10%);
+               }
+            }
+
+            .arrow_box {
+               position: relative;
+               background: #02b68e;
+            }
+            .arrow_box:after {
+               left: 100%;
+               top: 50%;
+               border: solid transparent;
+               content: " ";
+               height: 0;
+               width: 0;
+               position: absolute;
+               pointer-events: none;
+               border-color: rgba(2, 182, 142, 0);
+               border-left-color: #02b68e;
+               border-width: 7px;
+               margin-top: -7px;
+               z-index: 9999;
+            }
+         }
+
+         > aside {
+            position: fixed;
+            top: 0;
+            left: 210px;
+            overflow: auto;
+            width: 210px;
+            height: 100%;
+            background: #222a30;
+            border-left: 1px solid lighten(#222a30, 5%);
+            padding-top: 50px;
          }
 		}
-   }
-
-   > ul {
-      margin-bottom: 15px;
-
-      > li > a {
-         font-size: 1.2em;
-      }
    }
 }
 
 
 #page {
-	background: #fff;
-	margin-left: 250px;
-	padding: 30px;
-}
+   max-width: 700px;
+   background: #fff;
+   border-right: 1px solid #ddd;
+   padding: 50px;
+   margin-left: 420px;
 
-textarea {
-   border: none;
-   padding: 5px;
-   width: 100%;
-   height: 250px;
-   overflow: auto;
+   h1:first-child {
+      margin-top: 0;
+   }
 }
 

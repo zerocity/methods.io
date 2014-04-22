@@ -5,7 +5,8 @@ angular.module('methodsioApp')
     return {
       restrict: 'E',
       scope: {
-         data: '=userInput'
+         data: '=userInput',
+         ngModel: '='
       },
       templateUrl: 'views/directives/userValue.html',
       controller: function($scope) {

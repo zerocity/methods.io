@@ -65,7 +65,7 @@
         <div editable-textarea="processStep.behavior"  e-rows="5" e-cols="155" ng-model="processStep.behavior" ng-bind-html="processStep.behavior | markdown"></div>
 
          <!-- Create an directive for the imput type see /app/views/directives/userValue.html -->
-        <user-value user-input="processStep.userInput" ></user-value>
+        <user-value ng-model="processStep.userInput" user-input="processStep.userInput" ></user-value>
 
       </div>
   </div>

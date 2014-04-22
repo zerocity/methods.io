@@ -7,6 +7,6 @@ angular.module('methodsioApp')
 
       $scope.getScope = function () {
          console.log('test');
-         console.log($scope);
+         console.log($scope.data.procedure);
       }
 });

@@ -22,15 +22,12 @@
 
 <!-- expectedValue should not be default !!! TODO  -->
    <div ng-if="data.type == 'range'">
-      <div class="btn-group" ng-model="data.value">
-       <label class="btn btn-default" ng-repeat="entry in data.expectedValue">
+      <div class="btn-group">
+       <label class="btn btn-default" ng-model="data.value" ng-repeat="entry in data.expectedValue">
          <input ng-minlength="entry.minValue" ng-maxlength="entry.maxValue" type="number" value="{{entry.value}}">
          Expected value {{entry.expectedValue}} [UNIT]
        </label>
       </div>
    </div>
-
-   <p> USER SET Value {{data.value}}</p>
-
 </div>
 

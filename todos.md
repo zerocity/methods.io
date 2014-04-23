@@ -1,5 +1,6 @@
 # Todo's
 
+- MD --> mixing solutions together
 - Editor CSS
 - Controller functions on editor buttons
 - Parser Markdown to JSON

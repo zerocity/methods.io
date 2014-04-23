@@ -26,11 +26,11 @@
 </header>
 <aside id="toc">
   <ul>
-    <li><a href="#">Theory &amp; Setup <i class="glyphicon glyphicon-chevron-down"></i></a></li>
-    <li><a href="#">Abstract <i class="muted">-</i></a></li>
-    <li><a href="#">Introduction <i>10</i></a></li>
-    <li><a href="#">Equipment <i>35</i></a></li>
-    <li><a href="#">Material <i>22</i></a></li>
+    <li><a href="">Theory &amp; Setup <i class="glyphicon glyphicon-chevron-down"></i></a></li>
+    <li><a href="">Abstract <i class="muted">-</i></a></li>
+    <li><a href="">Introduction <i>10</i></a></li>
+    <li><a href="">Equipment <i>35</i></a></li>
+    <li><a href="">Material <i>22</i></a></li>
   </ul>
   <ul>
     <li><a href="#">Process <i class="glyphicon glyphicon-chevron-down pull-right"></i></a></li>
@@ -48,5 +48,6 @@
    <section id="editor" >
       <div ui-codemirror="{ onLoad : codemirrorLoaded }" ng-model="md" ></div>
    </section>
-   <section id="page" ng-bind-html="md | markdown"> </section>
+
+   <section id="page"  ng-bind-html="md | markdown"> </section>
 </div>

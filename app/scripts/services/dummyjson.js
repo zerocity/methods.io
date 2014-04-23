@@ -177,58 +177,57 @@ angular.module('methodsioApp')
       },
       json2md : function(jsonImport) {
          var exportMarkdown = '';
-         // Add Abstract
-         jsonImport.abstract ='# Abstract \n'+jsonImport.abstract;
-         // exportMarkdown = jsonImport.abstract + '  \n ';
+         var addTitel = function (title) {
+            return exportMarkdown = exportMarkdown + '# '+title+'  \n  \n';
+         };
 
-         // Add Introduction
-         jsonImport.introduction ='# Introduction \n'+jsonImport.introduction;
-         //exportMarkdown = exportMarkdown + jsonImport.introduction + '  \n ';
+         var addParagraf = function (p) {
+            return exportMarkdown = exportMarkdown + p+'  \n  \n';
+         };
 
-/*         // Add list features
-         exportMarkdown = exportMarkdown + '  \n # Equipment' +'  \n ';
-         _.map(jsonImport.equipment,function (value,key) {
-            jsonImport.equipment[key] = '- '+jsonImport.equipment[key];
-            exportMarkdown = exportMarkdown + jsonImport.equipment[key] + '  \n ';
-         });
-         // linebreak
-         exportMarkdown = exportMarkdown + '  \n '*/
+         var addList = function (list) {
+            _.map(list,function (value,key) {
+               return exportMarkdown = exportMarkdown +'- '+ list[key] + '  \n';
+            });
+         };
 
-         // Add list features
-/*         exportMarkdown = exportMarkdown + '# Materials  \n';
+         var addNumListTitle = function(title,key) {
+            title = '\n### '+(key +1) +'. '+ title
+            return exportMarkdown = exportMarkdown + title +'  \n '
+         }
 
-         _.map(jsonImport.materials,function (value,key) {
-            jsonImport.materials[key] = '- '+jsonImport.materials[key];
-            exportMarkdown = exportMarkdown + jsonImport.materials[key] + '  \n';
-         });*/
+         var addLineBreak = function() {
+            return exportMarkdown = exportMarkdown + '  \n';
+         }
 
+         var addSubTitle = function(title) {
+            return exportMarkdown = exportMarkdown + '## '+title+'  \n  \n';
+         }
 
-         //exportMarkdown = exportMarkdown + '# Workspace Preration' +'  \n';
+         var addProcessSteps = function(Step){
+            _.map(Step,function (value,key){
+               addNumListTitle(value.title,key)
+               addParagraf(value.context)
+               addParagraf(value.highlights)
+               addParagraf(value.critical)
+               addParagraf(value.safety)
+               addParagraf(value.behavior)
+               addUserImputExtentsion(value)
+            });
+         }
 
-         //jsonImport.enviromentConditions = '# Workspace Preration \n'+jsonImport.enviromentConditions;
-         //exportMarkdown = exportMarkdown + jsonImport.enviromentConditions  +'  \n ';
+         var addProcessGroup = function(group) {
+            console.log(group);
+            _.map(group,function(value,key){
+               addSubTitle(value.processGroupTitle);
+               addProcessSteps(value.processSteps);
+            });
+         }
 
-      //
-         // add Procedure MD title
-         jsonImport.procedureTitle = '## Procedure';
-      //
-
-         _.map(jsonImport.procedure,function (value,key){
-            // Group Titles
-            value.processGroupTitle = '## '+value.processGroupTitle
-            exportMarkdown = exportMarkdown + value.processGroupTitle +' \n'
-            _.map(value.processSteps,function (value,key){
-               //
-               value.title = '\n### '+(key +1) +'. '+ value.title
-               exportMarkdown = exportMarkdown + value.title +'  \n '
-               exportMarkdown = exportMarkdown + value.context +'  \n   \n'
-               exportMarkdown = exportMarkdown + value.highlights +'  \n '
-               exportMarkdown = exportMarkdown + value.critical +'  \n '
-               exportMarkdown = exportMarkdown + value.safety +'  \n '
-               exportMarkdown = exportMarkdown + value.behavior +'  \n '
-
-
-               var codeBlock = '  \n'
+         var addUserImputExtentsion = function(value) {
+               var codeBlock = '';
+               addLineBreak();
+               // remove meta information from json object
                value.userInput = _.omit(value.userInput,'user','date');
                _.map(value.userInput,function (value,key){
                   if (typeof value[0] === 'object') {
@@ -237,13 +236,33 @@ angular.module('methodsioApp')
                      codeBlock = value +' '+ codeBlock;
                   }
                });
-               // add to Json markdown
-               value.userInput ='´´´userImput '+codeBlock+' ´´´';
-               exportMarkdown = exportMarkdown + value.userInput +' \n'
-            });
-         });
+               return exportMarkdown = exportMarkdown + '´´´userImput '+codeBlock+' ´´´  \n'
+         }
 
-      //console.log(exportMarkdown);
+
+         // Add Abstract
+         addTitel('Abstract');
+         addParagraf(jsonImport.abstract);
+         // Add Introduction
+         addTitel('Introduction');
+         addParagraf(jsonImport.introduction);
+
+         // Add list features
+         addTitel('Equipment');
+         addList(jsonImport.equipment);
+         addLineBreak();
+
+         // Add list features
+         addTitel('Materials');
+         addList(jsonImport.materials);
+         addLineBreak();
+
+         addTitel('Workspace Preparation');
+         addParagraf(jsonImport.enviromentConditions);
+
+         addTitel('Procedure');
+         // add ProcessGroup with his childs
+         addProcessGroup(jsonImport.procedure);
 
       return exportMarkdown;
 

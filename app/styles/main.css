@@ -176,3 +176,7 @@ header .inner #view-buttons {
 #main #page h1:first-child {
   margin-top: 0;
 }
+#main #page.fullScreen {
+  position: static;
+  width: 100%;
+}

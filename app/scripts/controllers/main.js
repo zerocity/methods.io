@@ -24,7 +24,6 @@ angular.module('methodsioApp')
                $scope.group = element;
             }
 
-         console.log('group', $scope.group);
          $(element).toggleClass(animate)
 
          }else{
@@ -37,26 +36,31 @@ angular.module('methodsioApp')
 
       $scope.editorHight= $(window).height() - 50;
 
-        $scope.codemirrorLoaded = function(_editor){
-          // Editor part
-          var _doc = _editor.getDoc();
-          _editor.focus();
+      $scope.codemirrorLoaded = function(_editor){
+       // Editor part
+       var _doc = _editor.getDoc();
+       _editor.focus();
 
-          // Options
-          _editor.setOption('lineNumbers', true);
-          _editor.setOption('lineWrapping', true);
-          _editor.setOption('mode','markdown');
-          _editor.setOption('theme','xq-light');
+       // Options
+       _editor.setOption('lineNumbers', true);
+       _editor.setOption('lineWrapping', true);
+       _editor.setOption('mode','markdown');
+       _editor.setOption('theme','xq-light');
 
-          _doc.markClean()
-          // Events
-           _editor.on('scroll', function (instance){
-               var scrollInfo = instance.getScrollInfo();
-               var calc = (scrollInfo.top / scrollInfo.height) * $('#page')[0].scrollHeight;
-               $('#page').scrollTop(calc)
-            });
-           // end of codemirrow
-        };
+       _doc.markClean()
+       // Events
+        _editor.on('scroll', function (instance){
+            var scrollInfo = instance.getScrollInfo();
+            var calc = (scrollInfo.top / scrollInfo.height) * $('#page')[0].scrollHeight;
+            $('#page').scrollTop(calc)
+         });
+        // end of codemirrow
+      };
+
+      $scope.toggelEditor = function(){
+         $('#editor').toggleClass('hide');
+         $('#page').toggleClass('fullScreen');
+      };
 
    $(window).resize(function() {
       $scope.editorHight = $(window).height() - 50;

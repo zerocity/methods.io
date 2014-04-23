@@ -35,27 +35,31 @@ angular.module('methodsioApp')
 
       $scope.md = dummyJson.json2md(dummyJson.getDummy());
 
+      $scope.editorHight= $(window).height() - 50;
 
-  $scope.codemirrorLoaded = function(_editor){
-    // Editor part
-    var _doc = _editor.getDoc();
-    _editor.focus();
+        $scope.codemirrorLoaded = function(_editor){
+          // Editor part
+          var _doc = _editor.getDoc();
+          _editor.focus();
 
-    // Options
-    _editor.setOption('lineNumbers', true);
-    _editor.setOption('lineWrapping', true);
-    _editor.setOption('mode','markdown');
-    _editor.setOption('theme','xq-light');
+          // Options
+          _editor.setOption('lineNumbers', true);
+          _editor.setOption('lineWrapping', true);
+          _editor.setOption('mode','markdown');
+          _editor.setOption('theme','xq-light');
 
-    _doc.markClean()
-    // Events
-    _editor.on("beforeChange",function (res) {
-      console.log(res.doc.height);
-    });
-  };
+          _doc.markClean()
+          // Events
+           _editor.on('scroll', function (instance){
+               var scrollInfo = instance.getScrollInfo();
+               var calc = (scrollInfo.top / scrollInfo.height) * $('#page')[0].scrollHeight;
+               $('#page').scrollTop(calc)
+            });
+           // end of codemirrow
+        };
 
-   window.onresize = function(event) {
-      $scope.editorHight= $(window).height();
-   };
+   $(window).resize(function() {
+      $scope.editorHight = $(window).height() - 50;
+   });
 
 });

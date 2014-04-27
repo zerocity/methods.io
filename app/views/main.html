@@ -40,13 +40,13 @@
       </a>
       <ul class="grp{{$index}} hide" id="pro-grp{{$index}}" >
          <li ng-repeat="processStep in processgroup.processSteps">
-            <a href="" class="processTitle">{{$index +1 }} - {{processStep.title}}</a>
+            <a href="/step/{{processStep.processStepId}}" class="processTitle">{{processStep.title}} <i>{{$index +1 }}.</i> </a>
          </li>
          <li>
-            <a href="" class="newStep">create a new step</a>
+            <a href="/new/step" class="newStep"><i class="glyphicon glyphicon-file"></i> Create a new step</a>
          </li>
          <li>
-            <a href="" class="newGroup">create a new Group</a>
+            <a href="/new/group" class="newGroup"><i class="glyphicon glyphicon-folder-open"></i> Create a new Group</a>
          </li>
       </ul>
     </li>

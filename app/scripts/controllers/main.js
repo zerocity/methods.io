@@ -12,6 +12,11 @@ angular.module('methodsioApp')
 
       $scope.group='';
 
+      $scope.toggelEditor = function() {
+         $('#editor').toggleClass('hide')
+         $('#page').toggleClass('fullScreen')
+      }
+
       $scope.leo = function (element,animate) {
          if ($scope.group !== element) {
             if ($scope.group.length === '') {

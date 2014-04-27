@@ -52,21 +52,16 @@ angular.module('methodsioApp')
          }
 
          _session.on('changeScrollTop',function (scrollBarTop){
-            var scrollbarHeight = newHeight();
-            var calc = (scrollBarTop / scrollbarHeight) * $('#page')[0].scrollHeight;
+            if (typeof $('#page')[0] !== 'undefined') {
+               var scrollbarHeight = newHeight();
+               var calc = (scrollBarTop / scrollbarHeight) * $('#page')[0].scrollHeight;
+               $('#page').scrollTop(calc)
+            }
             // it is not posible to scroll to the bottom on the preview ...
-            $('#page').scrollTop(calc)
          });
       }
 
       //$scope.md = dummyJson.json2md(dummyJson.getDummy());
       $scope.md = dummyJson.getMirko();
       dummyJson.md2json($scope.md);
-
-      $scope.editorHight= $(window).height() - 50;
-
-      $(window).resize(function() {
-         $scope.editorHight = $(window).height() - 50;
-      });
-
 });

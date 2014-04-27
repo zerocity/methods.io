@@ -162,10 +162,83 @@ angular.module('methodsioApp')
         ]
       }
 
+   var mirko = "# Transfection siRNA\n\
+\n\
+6 well plate ~200 000 cells/well (depends on proloferation kinetics) for transfection 70% confluency\n\
+\n\
+#### 1. Well Plate preperation\n\
+\n\
+For one well:\n\
+\n\
+`vessel 1` 150 µL Optimem + 3 µL siRNA (120 nM)\n\
+\n\
+`tube 2` 40 µL Optimem + 5 µL Oligofectamine (4°C Heidi lab)\n\
+\n\
+`consider vessel size` consider final volume after solution preparation\n\
+\n\
+#### 2. incubate both 10' room temp\n\
+\n\
+#### 3. currently remove medium\n\
+#### 4. wash with PBS (don't remove PBS until transfection will start)\n\
+\n\
+#### 5. After 10' mix tube 1 into tube 2 (not vice versa) by dropping it in slowly\n\
+\n\
+#### 6. Incubate 15' room temp\n\
+\n\
+#### 7. Add 300 µL Optimem (one well!!) to the solution, mix smoothly 1x\n\
+\n\
+#### 8. remove PBS from wells\n\
+\n\
+#### 9. Add 500 µL ready to use transfection solution to the cells\n\
+\n\
+#### 10. Incubate 4 - 5 h (toss 3 x in between)\n\
+\n\
+#### 11. add 1 mL proper medium/15% FCS (final conc. 10%) use medium without antibiotics (in fridge)!!!\n\
+\n\
+#### 12. Incubate further 24h at least (mRNA level), for decreased protein level 48h\ ";
 
+   var mirko2 = "# Transfection siRNA\n\
+\n\
+6 well plate ~200 000 cells/well \n\
+\n\
+(depends on proloferation kinetics) for transfection 70% confluency\n\
+\n\
+1. **Well Plate preperation**\n\
+\n\
+  For one well:\n\
+  \n\
+  `vessel 1` 150 µL Optimem + 3 µL siRNA (120 nM)\n\
+  \n\
+  `tube 2` 40 µL Optimem + 5 µL Oligofectamine (4°C Heidi lab)\n\
+  \n\
+  `consider vessel size` consider final volume after solution preparation\n\
+\n\
+2. **incubate both 10' room temp**\n\
+\n\
+3. **currently remove medium**\n\
+4. **wash with PBS (don't remove PBS until transfection will start)**\n\
+\n\
+5. **After 10' mix tube 1 into tube 2 (not vice versa) by dropping it in slowly**\n\
+\n\
+6. **Incubate 15' room temp**\n\
+\n\
+7. **Add 300 µL Optimem (one well!!) to the solution, mix smoothly 1x**\n\
+\n\
+8. **remove PBS from wells**\n\
+\n\
+9. **Add 500 µL ready to use transfection solution to the cells**\n\
+\n\
+10. **Incubate 4 - 5 h (toss 3 x in between)**\n\
+\n\
+11. **add 1 mL proper medium/15% FCS (final conc. 10%) use medium without antibiotics (in fridge)!!!**\n\
+\n\
+12. **Incubate further 24h at least (mRNA level), for decreased protein level 48h**\n";
 
     // Public API here
     return {
+      getMirko: function() {
+         return mirko2;
+      },
       getDummy: function () {
          return dummy;
       },
@@ -232,33 +305,37 @@ angular.module('methodsioApp')
                return exportMarkdown = exportMarkdown + '´´´userImput '+codeBlock+' ´´´  \n'
          }
 
-/*         Add Abstract
+         //Add Abstract
          addTitel('Abstract');
          addParagraf(jsonImport.abstract);
-         Add Introduction
+         //Add Introduction
          addTitel('Introduction');
          addParagraf(jsonImport.introduction);
 
-         Add list features
+         //Add list features
          addTitel('Equipment');
          addList(jsonImport.equipment);
          addLineBreak();
 
-         Add list features
+         //Add list features
          addTitel('Materials');
          addList(jsonImport.materials);
          addLineBreak();
 
          addTitel('Workspace Preparation');
-         addParagraf(jsonImport.enviromentConditions);*/
+         addParagraf(jsonImport.enviromentConditions);
 
          addTitel('Procedure');
          // add ProcessGroup with his childs
          addProcessGroup(jsonImport.procedure);
+         return exportMarkdown;
+      },
+      md2json : function(md){
+         var lexer = new marked.Lexer();
+         var tokens = lexer.lex(md);
+         //console.log(tokens);
 
-      return exportMarkdown;
-
+         //console.log(lexer.rules);
       }
-
     };
   });

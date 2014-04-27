@@ -4,7 +4,7 @@
    </section>
    <div class="inner">
       <div id="editor-buttons">
-         <div class="btn-group">
+         <div class="btn-group hide">
            <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-header"></i></button>
            <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-font"></i></button>
            <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-bold"></i></button>
@@ -26,11 +26,11 @@
 </header>
 <aside id="toc">
   <ul>
-    <li><a href="">Theory &amp; Setup <i class="glyphicon glyphicon-chevron-down"></i></a></li>
-    <li><a href="">Abstract <i class="muted">-</i></a></li>
-    <li><a href="">Introduction <i>10</i></a></li>
-    <li><a href="">Equipment <i>35</i></a></li>
-    <li><a href="">Material <i>22</i></a></li>
+    <li><a href="">Therory &amp; Setup <i class="glyphicon glyphicon-chevron-down"></i></a></li>
+    <li class="general-information"><a href="">Abstract <i class="muted">-</i></a></li>
+    <li class="general-information"><a href="">Introduction <i>10</i></a></li>
+    <li class="general-information"><a href="">Equipment <i>35</i></a></li>
+    <li class="general-information"><a href="">Material <i>22</i></a></li>
   </ul>
   <ul>
     <li><a href="#">Process <i class="glyphicon glyphicon-chevron-down pull-right"></i></a></li>
@@ -39,14 +39,33 @@
       <a class="active" href="" ng-click="leo('.grp'+$index,'hide')" > {{processgroup.processGroupTitle}} <i class="arrow_box">{{processgroup.processSteps.length}}</i>
       </a>
       <ul class="grp{{$index}} hide" id="pro-grp{{$index}}" >
-         <li ng-repeat="processStep in processgroup.processSteps"><a href="">{{$index +1 }} - {{processStep.title}}</a></li>
+         <li ng-repeat="processStep in processgroup.processSteps">
+            <a href="" class="processTitle">{{$index +1 }} - {{processStep.title}}</a>
+         </li>
+         <li>
+            <a href="" class="newStep">create a new step</a>
+         </li>
+         <li>
+            <a href="" class="newGroup">create a new Group</a>
+         </li>
       </ul>
     </li>
+
+
+
+
   </ul>
 </aside>
 <div id="main" ng-style="{height: editorHight}">
    <section id="editor" >
-      <div ui-codemirror="{ onLoad : codemirrorLoaded }" ng-model="md" ></div>
+      <div ng-model="md" ui-ace="{
+        useWrapMode : true,
+        showGutter: true,
+        theme:'kuroir',
+        mode: 'markdown',
+        onLoad: ace,
+        onChange: aceChanged
+      }"></div>
    </section>
 
    <section id="page"  ng-bind-html="md | markdown"> </section>

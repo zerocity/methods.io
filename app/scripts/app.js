@@ -8,7 +8,7 @@ angular
     'ngRoute',
     'mgcrea.ngStrap',
     'xeditable',
-    'ui.codemirror'
+    'ui.ace'
   ])
   .config(function ($routeProvider) {
     $routeProvider

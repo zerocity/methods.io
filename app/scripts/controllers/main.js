@@ -32,38 +32,36 @@ angular.module('methodsioApp')
          }
       }
 
-      $scope.md = dummyJson.json2md(dummyJson.getDummy());
+      $scope.ace  =function(_editor) {
+
+         var _session = _editor.getSession();
+         // Ace settings
+
+         _editor.setHighlightActiveLine(true);
+         _editor.setShowPrintMargin(true);
+
+         var newHeight = function() {
+             return _editor.getSession().getScreenLength()
+                  * _editor.renderer.lineHeight
+                  + _editor.renderer.scrollBar.getWidth();
+         }
+
+         _session.on('changeScrollTop',function (scrollBarTop){
+            var scrollbarHeight = newHeight();
+            var calc = (scrollBarTop / scrollbarHeight) * $('#page')[0].scrollHeight;
+            // it is not posible to scroll to the bottom on the preview ...
+            $('#page').scrollTop(calc)
+         });
+      }
+
+      //$scope.md = dummyJson.json2md(dummyJson.getDummy());
+      $scope.md = dummyJson.getMirko();
+      dummyJson.md2json($scope.md);
 
       $scope.editorHight= $(window).height() - 50;
 
-      $scope.codemirrorLoaded = function(_editor){
-       // Editor part
-       var _doc = _editor.getDoc();
-       _editor.focus();
-
-       // Options
-       _editor.setOption('lineNumbers', true);
-       _editor.setOption('lineWrapping', true);
-       _editor.setOption('mode','markdown');
-       _editor.setOption('theme','xq-light');
-
-       _doc.markClean()
-       // Events
-        _editor.on('scroll', function (instance){
-            var scrollInfo = instance.getScrollInfo();
-            var calc = (scrollInfo.top / scrollInfo.height) * $('#page')[0].scrollHeight;
-            $('#page').scrollTop(calc)
-         });
-        // end of codemirrow
-      };
-
-      $scope.toggelEditor = function(){
-         $('#editor').toggleClass('hide');
-         $('#page').toggleClass('fullScreen');
-      };
-
-   $(window).resize(function() {
-      $scope.editorHight = $(window).height() - 50;
-   });
+      $(window).resize(function() {
+         $scope.editorHight = $(window).height() - 50;
+      });
 
 });

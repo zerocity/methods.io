@@ -180,3 +180,12 @@ header .inner #view-buttons {
   position: static;
   width: 100%;
 }
+.ace_editor {
+  height: 100%;
+}
+.general-information {
+  display: none;
+}
+.newStep {
+  display: none;
+}

@@ -11,6 +11,9 @@ header {
   background: #007dcc;
   z-index: 999;
 }
+header a {
+  color: #FFFFFF;
+}
 header #logo {
   float: left;
   width: 210px;
@@ -186,6 +189,6 @@ header .inner #view-buttons {
 .general-information {
   display: none;
 }
-.newStep {
-  display: none;
+.content {
+  padding: 20px;
 }

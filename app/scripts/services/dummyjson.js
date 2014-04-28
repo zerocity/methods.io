@@ -93,7 +93,7 @@ angular.module('methodsioApp')
             "processGroupTitle": "Groupe Title 2",
             "processSteps": [
               {
-                "processStepId": 1,
+                "processStepId": 4,
                 "title": "Step title",
                 "context": "Context",
                 "highlights": "Highlights Context",
@@ -116,7 +116,7 @@ angular.module('methodsioApp')
                 }
               },
               {
-                "processStepId": 2,
+                "processStepId": 5,
                 "title": "Step title",
                 "context": "Context",
                 "highlights": "Highlights Context",
@@ -137,8 +137,8 @@ angular.module('methodsioApp')
                 }
               },
               {
-                "processStepId": 3,
-                "title": "Step title",
+                "processStepId": 6,
+                "title": "Step  asdas title",
                 "context": "Context",
                 "highlights": "Highlights Context",
                 "critical": "Critical Context",

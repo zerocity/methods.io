@@ -1,8 +1,17 @@
 'use strict';
 
 angular.module('methodsioApp')
-  .controller('ViewstepCtrl', function ($scope,$routeParams) {
+  .controller('ViewstepCtrl', function ($scope,$stateParams,$rootScope) {
+      console.log($stateParams);
+      var viewStep = this
 
-   $scope.params = $routeParams;
+      // reset menu
+      if (typeof $rootScope.group !== 'undefined') {
+         $($rootScope.group).toggleClass('hide')
+         console.log($rootScope.group);
+         $rootScope.group=''
+      }else{
+         console.log($rootScope.group);
+      }
 
-  });
+});

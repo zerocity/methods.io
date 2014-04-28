@@ -1,16 +1,16 @@
 'use strict';
 
 angular.module('methodsioApp')
-   .controller('MainCtrl', function ($scope, dummyJson) {
-
+   .controller('MainCtrl', function ($scope,$rootScope, dummyJson) {
+      var main = this
+      $rootScope.group='';
       $scope.data = dummyJson.getDummy();
 
       $scope.getScope = function () {
          console.log('test');
+         console.log(main);
          console.log($scope.data.procedure);
       }
-
-      $scope.group='';
 
       $scope.toggelEditor = function() {
          $('#editor').toggleClass('hide')
@@ -18,21 +18,21 @@ angular.module('methodsioApp')
       }
 
       $scope.leo = function (element,animate) {
-         if ($scope.group !== element) {
-            if ($scope.group.length === '') {
+         if ($rootScope.group !== element) {
+            if ($rootScope.group.length === '') {
 
-               $scope.group = element;
-               console.log('group', $scope.group);
+               $rootScope.group = element;
+               console.log('group', $rootScope.group);
 
             } else {
-               $($scope.group).toggleClass(animate)
-               $scope.group = element;
+               $($rootScope.group).toggleClass(animate)
+               $rootScope.group = element;
             }
 
          $(element).toggleClass(animate)
 
          }else{
-            $scope.group = '';
+            $rootScope.group = '';
             $(element).toggleClass(animate)
          }
       }

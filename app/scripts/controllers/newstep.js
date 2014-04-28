@@ -2,9 +2,13 @@
 
 angular.module('methodsioApp')
   .controller('NewstepCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+      // reset menu
+      if (typeof $rootScope.group !== 'undefined') {
+         $($rootScope.group).toggleClass('hide')
+         console.log($rootScope.group);
+         $rootScope.group=''
+      }else{
+         console.log($rootScope.group);
+      }
+
   });

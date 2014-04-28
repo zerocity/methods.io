@@ -24,17 +24,19 @@ angular
                },
                'sidebar':{
                   templateUrl:'views/sidebar.html',
-                  controller: 'MainCtrl'
+                  controller: 'MainCtrl as main'
                },
                'content':{
-                  templateUrl:'views/main.html'
+                  templateUrl:'views/main.html',
+                  controller: 'MainCtrl as main'
                }
             }
       }).state('app.newstep',{
          url: 'new/step',
          views:{
             'content@':{
-               templateUrl:'views/newstep.html'
+               templateUrl:'views/newstep.html',
+               controller: 'MainCtrl as main'
             }
          }
       }).state('app.newGroup',{
@@ -42,6 +44,14 @@ angular
          views:{
             'content@':{
                templateUrl:'views/newgroup.html'
+            }
+         }
+      }).state('app.viewStep',{
+         url: 'new/step/:id',
+         views:{
+            'content@':{
+               templateUrl:'views/viewstep.html',
+               controller: 'ViewstepCtrl as viewStep'
             }
          }
       });

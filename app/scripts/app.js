@@ -7,9 +7,9 @@ angular
     'ngSanitize',
     'ngRoute',
     'mgcrea.ngStrap',
-    'xeditable',
     'ui.router',
-    'ui.ace'
+    'ui.ace',
+    'pouchdb'
   ])
   .config(function($stateProvider,$urlRouterProvider) {
 
@@ -43,11 +43,12 @@ angular
          url:'new/group',
          views:{
             'content@':{
-               templateUrl:'views/newgroup.html'
+               templateUrl:'views/newgroup.html',
+               controller: 'MainCtrl as main'
             }
          }
       }).state('app.viewStep',{
-         url: 'new/step/:id',
+         url: 'step/:groupId/:stepId',
          views:{
             'content@':{
                templateUrl:'views/viewstep.html',

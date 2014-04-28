@@ -9,11 +9,14 @@
  <li><a href="#">Process <i class="glyphicon glyphicon-chevron-down pull-right"></i></a></li>
 
  <li ng-repeat="processgroup in data.procedure">
-   <a class="active" href="" ng-click="leo('.grp'+$index,'hide')"> {{processgroup.processGroupTitle}} <i class="arrow_box">{{processgroup.processSteps.length}}</i>
+   <a href="" ng-click="leo('.grp'+$index,'hide')"> {{processgroup.processGroupId}}  {{processgroup.processGroupTitle}} <i class="arrow_box">{{processgroup.processSteps.length}}</i>
    </a>
    <ul class="grp{{$index}} hide" id="pro-grp{{$index}}" >
       <li ng-repeat="processStep in processgroup.processSteps">
-         <a ui-sref="app.viewStep({id : processStep.processStepId})"  ng-href="#/step/{{processStep.processStepId}}" class="processTitle">{{processStep.title}} <i>{{$index +1 }}.</i> </a>
+         <a
+          ui-sref="app.viewStep({groupId : processgroup.processGroupId ,stepId : processStep.processStepId})"
+          ui-sref-active="arrow_box"
+          class="processTitle">{{processStep.title}} <i>{{$index +1 }}.</i> </a>
       </li>
       <li>
          <a ui-sref="app.newstep" ><i class="glyphicon glyphicon-file"></i> Create a new step</a>

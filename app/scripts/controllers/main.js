@@ -1,10 +1,17 @@
 'use strict';
 
 angular.module('methodsioApp')
-   .controller('MainCtrl', function ($scope,$rootScope, dummyJson) {
+   .controller('MainCtrl', function ($scope,$rootScope, dummyJson,AppDatabase,CreateDB) {
       var main = this
       $rootScope.group='';
-      $scope.data = dummyJson.getDummy();
+
+      //AppDatabase.createDummy();
+
+      CreateDB.get('dummy').then(function(doc) {
+         $scope.data = doc
+      })
+
+      //$scope.data = dummyJson.getDummy();
 
       $scope.getScope = function () {
          console.log('test');

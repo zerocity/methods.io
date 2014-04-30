@@ -186,9 +186,6 @@ header .inner #view-buttons {
 .ace_editor {
   height: 100%;
 }
-.general-information {
-  display: none;
-}
 .content {
   padding: 20px;
 }

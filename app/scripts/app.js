@@ -15,9 +15,29 @@ angular
 
       $urlRouterProvider.otherwise('/');
 
+      var createNewProtocol = {
+         url:'/',
+         views:{
+              'header':{
+                  controller:'NewprotocolCtrl as header',
+                  templateUrl:'views/header.html'
+               },
+               'sidebar':{
+                  controller:'NewprotocolCtrl as sidebar',
+                  templateUrl:'views/sidebar.html'
+               },
+               'content':{
+                  controller:'NewprotocolCtrl as main',
+                  templateUrl:'views/newprotocol.html'
+               }
+         }
+
+      }
+
       $stateProvider
+         .state('createNewProtocol',createNewProtocol)
          .state('app',{
-            url: '/',
+            url: '/app',
             controller: 'MainCtrl as main',
             views:{
                'header':{

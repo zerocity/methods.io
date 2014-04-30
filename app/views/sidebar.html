@@ -1,29 +1,52 @@
 <ul>
- <li><a href="">Therory &amp; Setup <i class="glyphicon glyphicon-chevron-down"></i></a></li>
- <li class="general-information"><a href="">Abstract <i class="muted">-</i></a></li>
- <li class="general-information"><a href="">Introduction <i>10</i></a></li>
- <li class="general-information"><a href="">Equipment <i>35</i></a></li>
- <li class="general-information"><a href="">Material <i>22</i></a></li>
+   <li><a href="">Therory &amp; Setup <i class="glyphicon glyphicon-chevron-down"></i></a></li>
+   <li>
+      <a href="">Abstract
+         <i class="muted">-</i>
+      </a>
+   </li>
+   <li>
+      <a href="">Introduction
+         <i class="glyphicon glyphicon-plus"></i>
+      </a>
+   </li>
+   <li>
+      <a href="">Equipment
+         <i class="glyphicon glyphicon-plus"></i>
+      </a>
+   </li>
+   <li>
+      <a href="">Material
+         <i class="glyphicon glyphicon-plus"></i>
+      </a>
+   </li>
 </ul>
 <ul>
- <li><a href="#">Process <i class="glyphicon glyphicon-chevron-down pull-right"></i></a></li>
-
- <li ng-repeat="processgroup in data.procedure">
-   <a href="" ng-click="leo('.grp'+$index,'hide')"> {{processgroup.processGroupId}}  {{processgroup.processGroupTitle}} <i class="arrow_box">{{processgroup.processSteps.length}}</i>
-   </a>
-   <ul class="grp{{$index}} hide" id="pro-grp{{$index}}" >
-      <li ng-repeat="processStep in processgroup.processSteps">
-         <a
-          ui-sref="app.viewStep({groupId : processgroup.processGroupId ,stepId : processStep.processStepId})"
-          ui-sref-active="arrow_box"
-          class="processTitle">{{processStep.title}} <i>{{$index +1 }}.</i> </a>
-      </li>
-      <li>
-         <a ui-sref="app.newstep" ><i class="glyphicon glyphicon-file"></i> Create a new step</a>
-      </li>
+   <li><a href="#">Process <i class="glyphicon glyphicon-chevron-down pull-right"></i></a></li>
       <li>
          <a ui-sref="app.newGroup"><i class="glyphicon glyphicon-folder-open"></i> Create a new Group</a>
       </li>
-   </ul>
- </li>
+
+      <li>
+         <a ui-sref="app.newstep" ><i class="glyphicon glyphicon-file"></i> Create a new step</a>
+      </li>
+
+   <li ng-repeat="processgroup in data.procedure">
+      <a href="" ng-click="leo('.grp'+$index,'hide')"> {{processgroup.processGroupId}}  {{processgroup.processGroupTitle}} <i class="arrow_box">{{processgroup.processSteps.length}}</i>
+      </a>
+      <ul class="grp{{$index}} hide" id="pro-grp{{$index}}" >
+         <li ng-repeat="processStep in processgroup.processSteps">
+            <a
+             ui-sref="app.viewStep({groupId : processgroup.processGroupId ,stepId : processStep.processStepId})"
+             ui-sref-active="arrow_box"
+             class="processTitle">{{processStep.title}} <i>{{$index +1 }}.</i> </a>
+         </li>
+         <li>
+            <a ui-sref="app.newstep" ><i class="glyphicon glyphicon-file"></i> Create a new step</a>
+         </li>
+         <li>
+            <a ui-sref="app.newGroup"><i class="glyphicon glyphicon-folder-open"></i> Create a new Group</a>
+         </li>
+      </ul>
+   </li>
 </ul>

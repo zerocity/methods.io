@@ -4,6 +4,7 @@ angular.module('methodsioApp')
    .controller('MainCtrl', function ($scope,$rootScope, dummyJson,AppDatabase,CreateDB) {
       var main = this
       $rootScope.group='';
+      main.isHidden = false;
 
       //AppDatabase.createDummy();
 
@@ -13,13 +14,7 @@ angular.module('methodsioApp')
 
       //$scope.data = dummyJson.getDummy();
 
-      $scope.getScope = function () {
-         console.log('test');
-         console.log(main);
-         console.log($scope.data.procedure);
-      }
-
-      $scope.toggelEditor = function() {
+      main.toggelEditor = function() {
          $('#editor').toggleClass('hide')
          $('#page').toggleClass('fullScreen')
       }

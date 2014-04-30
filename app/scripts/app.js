@@ -18,17 +18,19 @@ angular
       $stateProvider
          .state('app',{
             url: '/',
+            controller: 'MainCtrl as main',
             views:{
                'header':{
+                  controller: 'MainCtrl as main',
                   templateUrl:'views/header.html'
                },
                'sidebar':{
-                  templateUrl:'views/sidebar.html',
-                  controller: 'MainCtrl as main'
+                  controller: 'MainCtrl as main',
+                  templateUrl:'views/sidebar.html'
                },
                'content':{
-                  templateUrl:'views/main.html',
-                  controller: 'MainCtrl as main'
+                  controller: 'MainCtrl as main',
+                  templateUrl:'views/main.html'
                }
             }
       }).state('app.newstep',{
@@ -58,10 +60,34 @@ angular
       });
 
   }).run(function($rootScope) {
+
+      $rootScope.ace  =function(_editor) {
+         var _session = _editor.getSession();
+         // Ace settings
+
+         _editor.setHighlightActiveLine(true);
+         _editor.setShowPrintMargin(true);
+
+         var newHeight = function() {
+             return _editor.getSession().getScreenLength()
+                  * _editor.renderer.lineHeight
+                  + _editor.renderer.scrollBar.getWidth();
+         }
+
+         _session.on('changeScrollTop',function (scrollBarTop){
+            if (typeof $('#page')[0] !== 'undefined') {
+               var scrollbarHeight = newHeight();
+               var calc = (scrollBarTop / scrollbarHeight) * $('#page')[0].scrollHeight;
+               $('#page').scrollTop(calc)
+            }
+            // it is not posible to scroll to the bottom on the preview ...
+         });
+      }
+
+      // init editorheight
       $rootScope.editorHight= $(window).height() - 50;
       $(window).resize(function(e) {
          $rootScope.editorHight = $(window).height() - 50;
-         //console.log(e);
       });
   }
 );

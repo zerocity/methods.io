@@ -11,7 +11,6 @@ angular.module('methodsioApp')
          $rootScope.group='';
       }
 
-
       //AppDatabase.createDummy();
       CreateDB.get('dummy')
          .then(function(doc) {

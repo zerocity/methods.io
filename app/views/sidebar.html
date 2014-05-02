@@ -23,14 +23,6 @@
 </ul>
 <ul>
    <li><a href="#">Process <i class="glyphicon glyphicon-chevron-down pull-right"></i></a></li>
-      <li>
-         <a ui-sref="app.newGroup"><i class="glyphicon glyphicon-folder-open"></i> Create a new Group</a>
-      </li>
-
-      <li>
-         <a ui-sref="app.newstep" ><i class="glyphicon glyphicon-file"></i> Create a new step</a>
-      </li>
-
    <li ng-repeat="processgroup in data.procedure">
       <a href="" ng-click="leo('.grp'+$index,'hide')"> {{processgroup.processGroupId}}  {{processgroup.processGroupTitle}} <i class="arrow_box">{{processgroup.processSteps.length}}</i>
       </a>
@@ -44,9 +36,9 @@
          <li>
             <a ui-sref="app.newstep" ><i class="glyphicon glyphicon-file"></i> Create a new step</a>
          </li>
-         <li>
-            <a ui-sref="app.newGroup"><i class="glyphicon glyphicon-folder-open"></i> Create a new Group</a>
-         </li>
       </ul>
    </li>
+      <li>
+         <a ui-sref="app.newGroup"><i class="glyphicon glyphicon-folder-open"></i> Create a new Group</a>
+      </li>
 </ul>

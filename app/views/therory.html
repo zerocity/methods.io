@@ -1,0 +1,4 @@
+<section id="editor" >
+   <div ng-model="editorInput" ui-ace="{useWrapMode : true, showGutter: true, theme:'kuroir', mode: 'markdown', onLoad: ace, onChange: aceChanged }"></div>
+</section>
+<section id="page"  ng-bind-html="editorInput | markdown"> </section>

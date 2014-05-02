@@ -15,58 +15,60 @@ angular
 
       $urlRouterProvider.otherwise('/');
 
-      var createNewProtocol = {
-         url:'/new',
+      var theroryView = {
+         url:'therory',
          views:{
-              'header':{
-                  controller:'NewprotocolCtrl as header',
-                  templateUrl:'views/header.html'
-               },
-               'sidebar':{
-                  controller:'NewprotocolCtrl as sidebar',
-                  templateUrl:'views/sidebar.html'
-               },
-               'content':{
-                  controller:'NewprotocolCtrl as main',
-                  templateUrl:'views/newprotocol.html'
+               'content@':{
+                  controller:'TheroryCtrl',
+                  templateUrl:'views/therory.html'
                }
          }
+      }
 
+      var setupView = {
+         url:'setup',
+         views:{
+               'content@':{
+                  controller:'SetupCtrl',
+                  templateUrl:'views/setup.html'
+               }
+         }
       }
 
       $stateProvider
-         .state('createNewProtocol',createNewProtocol)
          .state('app',{
             url: '/',
-            controller: 'MainCtrl as main',
             views:{
                'header':{
-                  controller: 'MainCtrl as main',
+                  controller: 'MainCtrl',
                   templateUrl:'views/header.html'
                },
                'sidebar':{
-                  controller: 'MainCtrl as main',
+                  controller: 'MainCtrl',
                   templateUrl:'views/sidebar.html'
                },
                'content':{
-                  controller: 'MainCtrl as main',
+                  controller: 'MainCtrl',
                   templateUrl:'views/main.html'
                }
             }
-      }).state('app.newstep',{
-         url: 'new/step',
-         views:{
-            'content@':{
-               templateUrl:'views/newstep.html',
-               controller: 'MainCtrl as main'
-            }
-         }
+       })
+         .state('app.therory',theroryView)
+         .state('app.setup',setupView)
+         .state('app.newstep',{
+            url: 'new/step',
+               views:{
+                  'content@':{
+                     templateUrl:'views/newstep.html',
+                     controller: 'MainCtrl'
+                  }
+               }
       }).state('app.newGroup',{
          url:'new/group',
          views:{
             'content@':{
                templateUrl:'views/newgroup.html',
-               controller: 'MainCtrl as main'
+               controller: 'MainCtrl'
             }
          }
       }).state('app.viewStep',{
@@ -80,10 +82,10 @@ angular
       });
 
   }).run(function($rootScope) {
-
       $rootScope.ace  =function(_editor) {
          var _session = _editor.getSession();
          // Ace settings
+
 
          _editor.setHighlightActiveLine(true);
          _editor.setShowPrintMargin(true);
@@ -103,7 +105,6 @@ angular
             // it is not posible to scroll to the bottom on the preview ...
          });
       }
-
       // init editorheight
       $rootScope.editorHight= $(window).height() - 50;
       $(window).resize(function(e) {

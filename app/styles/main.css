@@ -164,6 +164,15 @@ header .inner #view-buttons {
 #main #editor h1:first-child {
   margin-top: 0;
 }
+#main .editor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  overflow: auto;
+  box-sizing: border-box;
+  background: #fff;
+}
 #main #page {
   position: absolute;
   top: 0;
